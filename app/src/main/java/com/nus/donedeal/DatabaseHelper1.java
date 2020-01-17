@@ -32,12 +32,14 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addData(String item) {
+    public boolean addData(String description, Float price, String paidBy) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL2, item);
+        contentValues.put(COL1, description);
+        contentValues.put(COL2, price);
+        contentValues.put(COL3, paidBy);
 
-        Log.d(TAG, "addData: Adding " + item + " to" + TABLE_NAME);
+        Log.d(TAG, "addData: Adding " + description + " to" + TABLE_NAME);
         long result = db.insert(TABLE_NAME, null, contentValues);
 
         // if date is inserted incorrectly it will return -1

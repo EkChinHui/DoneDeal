@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/text_paidby"
@@ -53,4 +53,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="view expenditure" />
+
+    <EditText
+        android:id="@+id/editText5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal" />
 </LinearLayout>
