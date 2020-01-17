@@ -11,6 +11,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String TABLE_NAME = "Table_1";
     private static final String COL0 = "ID";
     private static final String COL1 = "Name";
+    private static final String COL2 = "Expenditure";
+    private static final String COL3 = "Contribution";
 
     public DatabaseHelper(Context context) {
         super(context, TABLE_NAME,null,1);
@@ -18,7 +20,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + COL1 + " TEXT)";
+        String createTable = "CREATE TABLE " + TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " + COL1 + " TEXT, " +
+                             COL2 + " TEXT, " + COL3 + " )";
         db.execSQL(createTable);
     }
 
