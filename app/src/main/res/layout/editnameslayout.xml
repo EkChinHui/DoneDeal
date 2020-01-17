@@ -4,21 +4,21 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/t_name"
+        android:id="@+id/t_editName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName" />
 
     <Button
-        android:id="@+id/btn_add"
+        android:id="@+id/btn_save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Member" />
+        android:text="Save" />
 
     <Button
-        android:id="@+id/btn_view"
+        android:id="@+id/btn_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="View Members" />
+        android:text="Delete" />
 </LinearLayout>

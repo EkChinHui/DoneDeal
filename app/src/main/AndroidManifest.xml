@@ -15,5 +15,6 @@
         </activity>
         <activity android:name=".HomeActivity"></activity>
         <activity android:name=".NamesActivity"></activity>
+        <activity android:name=".EditNamesActivity"></activity>
     </application>
 </manifest>

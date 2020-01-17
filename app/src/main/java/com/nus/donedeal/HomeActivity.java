@@ -19,7 +19,7 @@ public class HomeActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homelayout);
         btn_add = findViewById(R.id.btn_add);
-        t_name = findViewById(R.id.editText);
+        t_name = findViewById(R.id.t_name);
         mDatabaseHelper = new DatabaseHelper(this);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
