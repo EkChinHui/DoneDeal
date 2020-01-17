@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends Activity {
-    Button btn_enter;
+    Button btn_enter, btn_addexpenditure;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,6 +17,15 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_addexpenditure = findViewById(R.id.btnaddexpenditure);
+        btn_addexpenditure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public  void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AddExpenditureActivity.class);
                 startActivity(intent);
             }
         });
