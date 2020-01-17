@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DatabaseHelper1 extends SQLiteOpenHelper {
-    private static final String TABLE_NAME = "Tabe_2";
+    private static final String TABLE_NAME = "Table_2";
     private static final String COL1 = "Description";
     private static final String COL2 = "Price";
     private static final String COL3 = "Paid_by";
@@ -21,7 +21,7 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE " + TABLE_NAME +
                 " (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COL1 + " TEXT," + COL2 + " REAL, " + COL3 + "TEXT)";
+                COL1 + " TEXT," + COL2 + " TEXT, " + COL3 + " TEXT)";
         db.execSQL(createTable);
     }
 
@@ -31,9 +31,9 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public boolean addData(String description, Float price, String paidBy) {
+    public boolean addData(String description, String price, String paidBy) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
+        ContentValues contentValues = new ContentValues(3);
         contentValues.put(COL1, description);
         contentValues.put(COL2, price);
         contentValues.put(COL3, paidBy);
@@ -41,8 +41,12 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         long result = db.insert(TABLE_NAME, null, contentValues);
 
         // if date is inserted incorrectly it will return -1
-        if (result == -1) return false;
-        else return true;
+        if (result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 
     public Cursor getData() {

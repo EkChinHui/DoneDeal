@@ -27,13 +27,13 @@ public class AddExpenditureActivity extends Activity {
             @Override
             public void onClick(View v) {
                 String description = editText_description.getText().toString();
-                Float price = Float.parseFloat(editText_amount.getText().toString());
+                String price = editText_amount.getText().toString();
                 String paidBy = editText_paidby.getText().toString();
                 addData(description, price, paidBy);
             }
         });
     }
-    public void addData(String description, Float price, String paidBy) {
+    public void addData(String description, String price, String paidBy) {
         boolean insertData = mDatabaseHelper.addData(description, price, paidBy);
         if (insertData) {
             toastMessage("Added expenditure");
