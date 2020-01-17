@@ -8,11 +8,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DatabaseHelper1 extends SQLiteOpenHelper {
-    private static final String TAG = "DatabaseHelper";
-    private static final String TABLE_NAME = "Expenditure_table";
-    public static final String COL1 = "Description";
-    public static final String COL2 = "Price";
-    public static final String COL3 = "Paid by";
+    private static final String TABLE_NAME = "Tabe_2";
+    private static final String COL1 = "Description";
+    private static final String COL2 = "Price";
+    private static final String COL3 = "Paid_by";
 
     public DatabaseHelper1(Context context) {
         super(context, TABLE_NAME, null, 1);
@@ -39,7 +38,6 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         contentValues.put(COL2, price);
         contentValues.put(COL3, paidBy);
 
-        Log.d(TAG, "addData: Adding " + description + " to" + TABLE_NAME);
         long result = db.insert(TABLE_NAME, null, contentValues);
 
         // if date is inserted incorrectly it will return -1
