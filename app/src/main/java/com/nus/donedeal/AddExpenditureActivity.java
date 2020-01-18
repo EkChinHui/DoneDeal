@@ -40,6 +40,7 @@ public class AddExpenditureActivity extends AppCompatActivity {
         mDatabaseHelper1 = new DatabaseHelper1(this);
         allNames = mDatabaseHelper.getAllNames();
 
+
         btn_addExpenditure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

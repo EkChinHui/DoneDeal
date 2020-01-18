@@ -3,16 +3,11 @@ package com.nus.donedeal;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -39,7 +34,6 @@ public class ViewExpenditureActivity extends Activity {
     private void populateListView() {
         data = databaseHelper1.getData(); //cursor
         List<ThreeStrings> threeStringsList = new ArrayList<>();
-//        ThreeStrings threeStrings1 = new ThreeStrings("a", "b", (float) 0.1);
         while(data.moveToNext()) {
             threeStrings = new ThreeStrings(data.getString(1), data.getString(3), data.getFloat(2));
             threeStringsList.add(threeStrings);
@@ -51,10 +45,8 @@ public class ViewExpenditureActivity extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 ThreeStrings checker = (ThreeStrings) adapterView.getItemAtPosition(position);
                 String name = checker.getLeft();
-                Log.i("TESTTTTTT", "onItemClick: " + name);
                 Cursor data = databaseHelper1.getItemID(name);
                 int itemID = -1;
-//                data.moveToFirst ();
                 while (data.moveToNext()) {
                     itemID = data.getInt(0);
                     description = databaseHelper1.getExpenseRow(itemID)[0];
@@ -65,13 +57,13 @@ public class ViewExpenditureActivity extends Activity {
                     Intent intent = new Intent(ViewExpenditureActivity.this, DeleteExpenditureActivity.class);
                     finish();
                     intent.putExtra("id", itemID);
-                    intent.putExtra("description", description);
+                    intent.putExtra("Description", description);
                     intent.putExtra("Amount", amount);
                     intent.putExtra("Paid By", paidBy);
                     startActivity(intent);
                 }
                 else {
-                    toastMessage("No such name");
+                    toastMessage("Expense doesn't exist");
                 }
             }
         });

@@ -43,8 +43,7 @@ public class DeleteExpenditureActivity extends Activity {
             @Override
             public void onClick(View v) {
                 databaseHelper1.deleteEntry(selectedID, selectedDescription);
-                Log.d("", "onClick: ");
-                toastMessage("Member removed");
+                toastMessage("Expense deleted");
                 finish();
                 Intent intent = new Intent(DeleteExpenditureActivity.this, ViewExpenditureActivity.class);
                 startActivity(intent);
