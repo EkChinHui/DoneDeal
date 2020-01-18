@@ -14,9 +14,8 @@ import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.OnLifecycleEvent;
 
 public class MainActivity extends Activity {
-    Button btn_enter, btn_addexpenditure;
+    Button btn_enter, btn_addexpenditure, btn_show, btn_reset;
     TextView tripName;
-    Button btn_reset;
 
     @Override
     protected void onResume() {
@@ -26,13 +25,11 @@ public class MainActivity extends Activity {
         }
     }
 
-    Button btn_enter, btn_addexpenditure, btn_show;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainlayout);
-        btn_enter = findViewById(R.id.btn_enter);
+        btn_enter = findViewById(R.id.btn_addexpenditure);
         tripName = findViewById(R.id.textView_home_tripName);
 
         if(!getTripName().equals("")) { // set trip name if it is keyed in
