@@ -22,8 +22,12 @@ public class MainActivity extends Activity {
         super.onResume();
         if (getStatus() == 0) {
             btn_reset.setVisibility(View.GONE);
+            btn_show.setVisibility(View.GONE);
+            tripName.setText("Done Deal");
         } else {
             btn_reset.setVisibility(View.VISIBLE);
+            btn_show.setVisibility(View.VISIBLE);
+            tripName.setText(getTripName());
         }
     }
 
@@ -41,9 +45,6 @@ public class MainActivity extends Activity {
         btn_reset = findViewById(R.id.btnreset);
         databaseHelper1 = new DatabaseHelper1(this);
         databaseHelper = new DatabaseHelper(this);
-        if (getStatus() == 0) {
-            btn_reset.setVisibility(View.GONE);
-        }
 
         btn_enter = findViewById(R.id.btn_addexpenditure);
         btn_enter.setOnClickListener(new View.OnClickListener() {
@@ -63,8 +64,11 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 setStatus();
+                setTripName();
                 endTrip();
                 Toast.makeText(MainActivity.this, "Trip Completed", Toast.LENGTH_SHORT).show();
+                finish();
+                startActivity(getIntent());
             }
         });
 
@@ -101,6 +105,13 @@ public class MainActivity extends Activity {
         SharedPreferences sharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("Status", 0);
+        editor.apply();
+    }
+
+    private void setTripName() {
+        SharedPreferences sharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("TripName", "");
         editor.apply();
     }
 }

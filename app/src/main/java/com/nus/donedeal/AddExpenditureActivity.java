@@ -83,7 +83,6 @@ public class AddExpenditureActivity extends AppCompatActivity {
         btn_viewExpenditure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
                 Intent intent = new Intent(AddExpenditureActivity.this, ViewExpenditureActivity.class);
                 startActivity(intent);
             }
