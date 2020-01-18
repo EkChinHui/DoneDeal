@@ -3,14 +3,14 @@ package com.nus.donedeal;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
 
-public class DeleteExpenditureActivity extends AppCompatActivity {
+public class DeleteExpenditureActivity extends Activity {
     TextView textDescription, textAmount, textPaidBy;
     Button btn_delete;
     DatabaseHelper1 databaseHelper1;
@@ -31,9 +31,9 @@ public class DeleteExpenditureActivity extends AppCompatActivity {
 
         Intent receiveIntent = getIntent();
         selectedID = receiveIntent.getIntExtra("id", -1); //Note: -1 is just the default value
-        selectedDescription = receiveIntent.getStringExtra("description");
-        selectedAmount = receiveIntent.getFloatExtra("amount", 0);
-        selectedPaidBy = receiveIntent.getStringExtra("paidBy");
+        selectedDescription = receiveIntent.getStringExtra("Description");
+        selectedAmount = receiveIntent.getFloatExtra("Amount", 0);
+        selectedPaidBy = receiveIntent.getStringExtra("Paid By");
 
         textDescription.setText(selectedDescription);
         textAmount.setText(selectedAmount.toString());
@@ -43,6 +43,7 @@ public class DeleteExpenditureActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 databaseHelper1.deleteEntry(selectedID, selectedDescription);
+                Log.d("", "onClick: ");
                 toastMessage("Member removed");
                 finish();
                 Intent intent = new Intent(DeleteExpenditureActivity.this, ViewExpenditureActivity.class);

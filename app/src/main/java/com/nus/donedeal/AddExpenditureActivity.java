@@ -10,9 +10,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
-public class AddExpenditureActivity extends Activity {
+public class AddExpenditureActivity extends AppCompatActivity {
     Button btn_addExpenditure, btn_viewExpenditure;
     EditText editText_description, editText_amount;
     Spinner spinner_paidBy, spinner_method;
