@@ -15,12 +15,18 @@ import androidx.lifecycle.OnLifecycleEvent;
 
 public class MainActivity extends Activity {
     Button btn_enter, btn_reset;
+    DatabaseHelper databaseHelper;
+    DatabaseHelper1 databaseHelper1;
+    public static DatabaseHelper instance;
 
     @Override
     protected void onResume() {
         super.onResume();
+        Toast.makeText(this, Integer.toString(getStatus()), Toast.LENGTH_SHORT).show();
         if (getStatus() == 0) {
             btn_reset.setVisibility(View.GONE);
+        } else {
+            btn_reset.setVisibility(View.VISIBLE);
         }
     }
 
@@ -30,6 +36,8 @@ public class MainActivity extends Activity {
         setContentView(R.layout.mainlayout);
         btn_enter = findViewById(R.id.btn_enter);
         btn_reset = findViewById(R.id.btnreset);
+        databaseHelper1 = new DatabaseHelper1(this);
+        databaseHelper = new DatabaseHelper(this);
         if (getStatus() == 0) {
             btn_reset.setVisibility(View.GONE);
         }
@@ -51,9 +59,17 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
                 setStatus();
+                endTrip();
                 Toast.makeText(MainActivity.this, "Trip Completed", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void endTrip() {
+        DatabaseHelper dbHelper = new DatabaseHelper(instance.context);
+        dbHelper.deleteData();
+        DatabaseHelper1 dbHelper1 = new DatabaseHelper1(instance.context);
+        dbHelper.deleteData();
     }
 
     private Integer getStatus() {

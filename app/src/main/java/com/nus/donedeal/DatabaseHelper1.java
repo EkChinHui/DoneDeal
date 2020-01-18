@@ -8,14 +8,23 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 public class DatabaseHelper1 extends SQLiteOpenHelper {
+
+    public SQLiteDatabase db;
     private static final String TABLE_NAME = "Table_2";
     public static final String COL0 = "ID";
     private static final String COL1 = "Description";
     private static final String COL2 = "Price";
     private static final String COL3 = "Paid_by";
+    public static DatabaseHelper1 instance;
+    public static Context context;
 
     public DatabaseHelper1(Context context) {
         super(context, TABLE_NAME, null, 1);
+        if (instance == null){
+            instance = this;
+            instance.context = context;
+            instance.db = instance.getWritableDatabase();
+        }
     }
 
     @Override
@@ -87,6 +96,10 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + COL0 + " = '" + id + "' AND " + COL1 +
                 " = '" + name + "'";
         db.execSQL(query);
+    }
+
+    public void deleteData(){
+        instance.context.deleteDatabase(TABLE_NAME);
     }
 
 }

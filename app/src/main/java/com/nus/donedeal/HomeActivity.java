@@ -80,9 +80,4 @@ public class HomeActivity extends Activity {
             editor.apply();
     }
 
-    private Integer getStatus() {
-        SharedPreferences sharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
-        Integer status = sharedPreferences.getInt("Status", 0);
-        return status;
-    }
 }

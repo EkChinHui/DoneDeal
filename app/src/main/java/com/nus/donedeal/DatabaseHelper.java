@@ -13,14 +13,23 @@ import java.util.ArrayList;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
+    public SQLiteDatabase db;
     private static final String TABLE_NAME = "Table_1";
     private static final String COL0 = "ID";
     private static final String COL1 = "Name";
     private static final String COL2 = "Expenditure";
     private static final String COL3 = "Contribution";
+    public static DatabaseHelper instance;
+    public static Context context;
 
     public DatabaseHelper(Context context) {
         super(context, TABLE_NAME,null,1);
+        // Init the singleton
+        if (instance == null){
+            instance = this;
+            instance.context = context;
+            instance.db = instance.getWritableDatabase();
+        }
     }
 
     @Override
@@ -129,4 +138,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     "' WHERE " + COL0 + " = '" + id + "'");
         }
     }
+
+    public void deleteData(){
+        instance.context.deleteDatabase(TABLE_NAME);
+    }
+
 }
