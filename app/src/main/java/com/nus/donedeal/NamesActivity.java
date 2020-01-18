@@ -46,6 +46,7 @@ public class NamesActivity extends Activity {
                     itemID = data.getInt(0);
                 }
                 if (itemID > -1) {
+                    finish();
                     Intent intent = new Intent(NamesActivity.this, EditNamesActivity.class);
                     intent.putExtra("id", itemID);
                     intent.putExtra("name", name);

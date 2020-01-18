@@ -37,6 +37,10 @@ public class EditNamesActivity extends Activity {
                 String item = t_editName.getText().toString();
                 if (!item.equals("")) {
                     mDatabaseHelper.updateName(item, selectedID, selectedName);
+                    finish();
+                    Intent intent = new Intent(EditNamesActivity.this, NamesActivity.class);
+                    startActivity(intent);
+                    toastMessage("Changes saved");
                 }
                 else {
                     toastMessage("You must enter a name");
@@ -48,6 +52,7 @@ public class EditNamesActivity extends Activity {
             public void onClick(View v) {
                 mDatabaseHelper.deleteName(selectedID, selectedName);
                 toastMessage("Member removed");
+                finish();
                 Intent intent = new Intent(EditNamesActivity.this, NamesActivity.class);
                 startActivity(intent);
             }
@@ -57,5 +62,4 @@ public class EditNamesActivity extends Activity {
     private void toastMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-
 }
