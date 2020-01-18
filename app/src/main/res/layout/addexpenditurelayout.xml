@@ -40,13 +40,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <EditText
-        android:id="@+id/editText_paidby"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
     <Button
         android:id="@+id/btn_enterexpenditure"
         android:layout_width="match_parent"
