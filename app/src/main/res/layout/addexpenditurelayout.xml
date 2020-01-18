@@ -53,28 +53,29 @@
     <TextView
         android:id="@+id/text_paidby"
         android:layout_width="50dp"
-        android:layout_height="20dp"
+        android:layout_height="30dp"
         android:layout_margin="10dp"
         android:text="Paid By:"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintHorizontal_bias="0.027"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.257" />
+        app:layout_constraintVertical_bias="0.266" />
 
     <Spinner
         android:id="@+id/spinner_paidBy"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="30dp"
         android:layout_margin="10dp"
-        android:layout_marginTop="285dp"
+        android:background="#33d9b2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.292"
+        app:layout_constraintHorizontal_bias="0.191"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_amount"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.266" />
 
     <TextView
         android:id="@+id/text_split"
@@ -82,26 +83,28 @@
         android:layout_height="20dp"
         android:layout_margin="10dp"
         android:text="Split"
+        android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.59"
+        app:layout_constraintHorizontal_bias="0.373"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintVertical_bias="0.268" />
 
     <Spinner
         android:id="@+id/spinner_method"
         android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:layout_margin="10dp"
-        android:layout_marginTop="12dp"
-        android:background="#ffffff"
+        android:background="#33d9b2"
         android:entries="@array/method"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintHorizontal_bias="0.627"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_amount" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.268" />
 
     <Button
         android:id="@+id/btn_addexpenditure"
@@ -109,7 +112,9 @@
         android:layout_height="100dp"
         android:background="@drawable/addexpenditure_button"
         android:fontFamily="sans-serif-condensed"
-        android:text="add expenditure"
+        android:text="+"
+        android:textColor="#ffffff"
+        android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.948"
@@ -123,6 +128,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/addexpenditure_button"
+        android:textColor="#ffffff"
         android:text="view expenditure"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
