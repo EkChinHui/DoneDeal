@@ -1,6 +1,7 @@
 package com.nus.donedeal;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -9,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SummaryActivity extends AppCompatActivity {
     DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
@@ -40,7 +42,12 @@ public class SummaryActivity extends AppCompatActivity {
         Float[] creditorsValue = getValues(creditorsIndex);
         sort(debtorsValue, debtorsIndex);
         sort(creditorsValue, creditorsIndex);
+        Log.d("debt", Arrays.toString(debtorsValue));
+        Log.d("credit", Arrays.toString(creditorsValue));
         log = settle(debtorsValue, debtorsIndex, creditorsValue, creditorsIndex);
+        for (int i = 0; i < log.size(); i++) {
+            Log.d("debtorsvalue", log.get(i));
+        }
         populateListView();
     }
 
@@ -141,7 +148,7 @@ public class SummaryActivity extends AppCompatActivity {
             if (debtorsValue[i] != 0) {
                 for (int j = lenCred - 1; j >= 0; j--) {
                     if (creditorsValue[j] != 0) {
-                        if (-creditorsValue[j] > debtorsValue[i]) {
+                        if (-creditorsValue[j] >= debtorsValue[i]) {
                             String log = names_arr[debtorsIndex[i]] + " pays " + names_arr[creditorsIndex[j]] + " " + debtorsValue[i];
                             creditorsValue[j] += debtorsValue[i];
                             debtorsValue[i] -= debtorsValue[i];
