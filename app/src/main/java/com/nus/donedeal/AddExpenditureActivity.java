@@ -11,7 +11,7 @@ import android.widget.Toast;
 public class AddExpenditureActivity extends Activity {
     Button btn_enterexpenditure, btn_viewExpenditure;
     EditText editText_description, editText_amount, editText_paidby;
-    DatabaseHelper1 mDatabaseHelper;
+    DatabaseHelper1 mDatabaseHelper1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +22,7 @@ public class AddExpenditureActivity extends Activity {
         editText_description = findViewById(R.id.editText_description);
         editText_amount = findViewById(R.id.editText_amount);
         editText_paidby = findViewById(R.id.editText_paidby);
-        mDatabaseHelper = new DatabaseHelper1(this);
+        mDatabaseHelper1 = new DatabaseHelper1(this);
 
         btn_enterexpenditure.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,7 +44,7 @@ public class AddExpenditureActivity extends Activity {
         });
     }
     public void addData(String description, Float price, String paidBy) {
-        boolean insertData = mDatabaseHelper.addData(description, price, paidBy);
+        boolean insertData = mDatabaseHelper1.addData(description, price, paidBy);
         if (insertData) {
             toastMessage("Added expenditure");
         }
