@@ -61,6 +61,27 @@ public class DatabaseHelper1 extends SQLiteOpenHelper {
         return data;
     }
 
+    public String[] getExpenseRow(int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor c = db.rawQuery(query, null);
+        c.moveToFirst();
+        String[] stringArr = new String[3];
+        if (c != null) {
+            while (c.getInt(c.getColumnIndex(COL0)) != (id)) {
+                c.moveToNext();
+            }
+            String Description = c.getString(c.getColumnIndex(COL1));
+            Float Amount = c.getFloat(c.getColumnIndex(COL2));
+            String PaidBy = c.getString(c.getColumnIndex(COL3));
+
+            stringArr[0] = Description;
+            stringArr[1] = Amount.toString();
+            stringArr[2] = PaidBy;
+        }
+        return stringArr;
+    }
+
     public void deleteEntry(int id, String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + COL0 + " = '" + id + "' AND " + COL1 +
