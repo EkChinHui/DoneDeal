@@ -45,7 +45,7 @@ public class AddExpenditureActivity extends Activity {
                     addData(description, float_price, paidBy);
                     String method = spinner_method.getSelectedItem().toString();
                     if (method.equals("Equally")) {
-                        int numberOfMembers = spinner_paidBy.getAdapter().getCount();
+                        Integer numberOfMembers = spinner_paidBy.getAdapter().getCount();
                         Float equalExpenditure = float_price / numberOfMembers;
                         addExpenditureEqually(equalExpenditure);
                         toastMessage("Split Equally");
