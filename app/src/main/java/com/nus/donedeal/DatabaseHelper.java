@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -72,6 +74,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
+    public void updateExpenditure(Float newExpenditure, int id, String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + TABLE_NAME + " SET " + COL2 + " = '" + newExpenditure + "' WHERE" + COL0 +
+                       " = '" + id + "' AND " + COL1 + " = '" + name + "'";
+        db.execSQL(query);
+    }
+
     public void deleteName(int id, String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + COL0 + " = '" + id + "' AND " + COL1 +
@@ -86,11 +95,26 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor data = db.rawQuery(query, null);
         data.moveToFirst();
         if (data != null) {
-            while (data.isAfterLast() == false) {
+            while (!data.isAfterLast()) {
                 arrayList.add(data.getString(data.getColumnIndex(COL1)));
                 data.moveToNext();
             }
         }
         return arrayList;
+    }
+
+    public void addExpenditureEqually(Float expenditure) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor c = db.rawQuery(query, null);
+        c.moveToFirst();
+        if (c != null) {
+            while (!c.isAfterLast()) {
+                Float currentExpenditure = c.getFloat(c.getColumnIndex(COL2));
+                Float updatedExpenditure = currentExpenditure + expenditure;
+                db.execSQL("UPDATE " + TABLE_NAME + " SET " + COL2 + " = '" + updatedExpenditure + "'");
+                c.moveToNext();
+            }
+        }
     }
 }

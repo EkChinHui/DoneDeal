@@ -45,6 +45,9 @@ public class AddExpenditureActivity extends Activity {
                     addData(description, float_price, paidBy);
                     String method = spinner_method.getSelectedItem().toString();
                     if (method.equals("Equally")) {
+                        int numberOfMembers = spinner_paidBy.getAdapter().getCount();
+                        Float equalExpenditure = float_price / numberOfMembers;
+                        addExpenditureEqually(equalExpenditure);
                         toastMessage("Split Equally");
                     } else if (method.equals("Manually")) {
                         toastMessage("Split Manually");
@@ -77,6 +80,10 @@ public class AddExpenditureActivity extends Activity {
         else {
             toastMessage("Something went wrong");
         }
+    }
+
+    public void addExpenditureEqually(Float expenditure) {
+        mDatabaseHelper.addExpenditureEqually(expenditure);
     }
 
     private void toastMessage(String message) {
