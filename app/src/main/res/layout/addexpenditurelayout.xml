@@ -26,13 +26,19 @@
         android:id="@+id/editText_amount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10" />
+        android:ems="10"
+        android:inputType="numberDecimal" />
 
     <TextView
         android:id="@+id/text_paidby"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Paid By:" />
+
+    <Spinner
+        android:id="@+id/spinner_paidBy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <EditText
         android:id="@+id/editText_paidby"
@@ -45,7 +51,7 @@
         android:id="@+id/btn_enterexpenditure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter" />
+        android:text="add expenditure" />
 
     <Button
         android:id="@+id/btn_viewexpenditure"
@@ -53,10 +59,4 @@
         android:layout_height="wrap_content"
         android:text="view expenditure" />
 
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="numberDecimal" />
 </LinearLayout>

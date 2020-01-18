@@ -17,5 +17,7 @@
         <activity android:name=".NamesActivity"></activity>
         <activity android:name=".EditNamesActivity"></activity>
         <activity android:name=".AddExpenditureActivity"></activity>
+        <activity android:name=".ViewExpenditureActivity"></activity>
+        <activity android:name=".DeleteExpenditureActivity"></activity>
     </application>
 </manifest>
