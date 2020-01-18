@@ -40,8 +40,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:id="@+id/text_split"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="split" />
+
+    <Spinner
+        android:id="@+id/spinner_method"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/method" />
+
     <Button
-        android:id="@+id/btn_enterexpenditure"
+        android:id="@+id/btn_addexpenditure"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="add expenditure" />

@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DoneDeal</string>
+    <string-array name="method">
+        <item>Equally</item>
+        <item>Manually</item>
+    </string-array>
 </resources>
