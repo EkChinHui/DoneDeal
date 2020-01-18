@@ -49,7 +49,7 @@ public class HomeActivity extends Activity {
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                changeStatus();
+                setStatus();
                 finish();
                 Intent intent = new Intent(HomeActivity.this, AddExpenditureActivity.class);
                 startActivity(intent);
@@ -71,10 +71,16 @@ public class HomeActivity extends Activity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    private void changeStatus() {
+    private void setStatus() {
+            SharedPreferences sharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("Status", 1);
+            editor.apply();
+    }
+
+    private Integer getStatus() {
         SharedPreferences sharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("Status", 1);
-        editor.apply();
+        Integer status = sharedPreferences.getInt("Status", 0);
+        return status;
     }
 }

@@ -33,14 +33,14 @@
         app:layout_constraintVertical_bias="0.95" />
 
     <Button
-        android:id="@+id/btnaddexpenditure"
+        android:id="@+id/btnreset"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:background="@drawable/custom_button"
         android:fontFamily="sans-serif-condensed"
-        android:text="+"
-        android:textSize="36sp"
+        android:text="Complete Trip"
         android:textColor="#ffffff"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.09"
