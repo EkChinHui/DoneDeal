@@ -3,6 +3,8 @@ package com.nus.donedeal;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,21 +12,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 public class ViewExpenditureActivity extends Activity {
     ListView listViewExpense;
     DatabaseHelper1 databaseHelper1;
     String description, paidBy;
     Float amount;
-
-    private static final String TAG_DESCRIPTION = "Description";
-    private static final String TAG_AMOUNT = "Amount";
-    private static final String TAG_PAIDBY = "PaidBy";
-
+    Cursor data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,16 +34,12 @@ public class ViewExpenditureActivity extends Activity {
         populateListView();
     }
     private void populateListView() {
-
-        ArrayList<HashMap<String, String>> list= new ArrayList<HashMap<String, String>>();
-        HashMap<String, String> map = new HashMap<String, String>();
-
-        Cursor data = databaseHelper1.getData();
+        data = databaseHelper1.getData(); //cursor
         ArrayList<String> listData = new ArrayList<>();
         while(data.moveToNext()) {
             listData.add(data.getString(1));
         }
-        ListAdapter adapter = new ArrayAdapter<>(ViewExpenditureActivity.this, android.R.layout.simple_list_item_1, listData);
+        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
         listViewExpense.setAdapter(adapter);
         listViewExpense.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
