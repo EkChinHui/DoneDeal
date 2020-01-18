@@ -1,7 +1,6 @@
 package com.nus.donedeal;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -9,7 +8,6 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class SummaryActivity extends AppCompatActivity {
@@ -50,6 +48,7 @@ public class SummaryActivity extends AppCompatActivity {
         ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, log);
         listViewSummary.setAdapter(adapter);
     }
+
     //Owes money if >0 (debtors)
     public Float[] getNet(Float[] expenditures_arr, Float[] contributions_arr) {
         int size = expenditures_arr.length;
