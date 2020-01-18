@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 
 public class HomeActivity extends Activity {
     DatabaseHelper mDatabaseHelper;
-    Button btn_add, btn_view;
+    Button btn_add, btn_view, btn_confirm;
     EditText t_name;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,6 +39,15 @@ public class HomeActivity extends Activity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, NamesActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_confirm = findViewById(R.id.btn_confirm);
+        btn_confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                Intent intent = new Intent(HomeActivity.this, AddExpenditureActivity.class);
                 startActivity(intent);
             }
         });
