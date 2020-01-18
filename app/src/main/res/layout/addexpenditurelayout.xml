@@ -1,67 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff">
 
     <TextView
         android:id="@+id/text_description"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Description" />
+        android:layout_margin="10dp"
+        android:text="Description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText_description"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_description" />
 
     <TextView
         android:id="@+id/text_amount"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Amount ($)" />
+        android:layout_margin="10dp"
+        android:text="Amount ($)"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_description" />
 
     <EditText
         android:id="@+id/editText_amount"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="1dp"
         android:ems="10"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_amount" />
 
     <TextView
         android:id="@+id/text_paidby"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Paid By:" />
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:text="Paid By:"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.044"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.257" />
 
     <Spinner
         android:id="@+id/spinner_paidBy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginTop="285dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.292"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_amount"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/text_split"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="split" />
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:layout_margin="10dp"
+        android:text="Split"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.59"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.25" />
 
     <Spinner
         android:id="@+id/spinner_method"
-        android:layout_width="match_parent"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:entries="@array/method" />
+        android:layout_margin="10dp"
+        android:layout_marginTop="12dp"
+        android:background="#ffffff"
+        android:entries="@array/method"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_amount" />
 
     <Button
         android:id="@+id/btn_addexpenditure"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="add expenditure" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/addexpenditure_button"
+        android:fontFamily="sans-serif-condensed"
+        android:text="add expenditure"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.944" />
 
     <Button
         android:id="@+id/btn_viewexpenditure"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="view expenditure" />
+        android:layout_margin="10dp"
+        android:background="@drawable/addexpenditure_button"
+        android:text="view expenditure"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editText_description"
+        app:layout_constraintVertical_bias="0.35" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
