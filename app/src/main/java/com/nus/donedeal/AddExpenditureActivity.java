@@ -43,6 +43,7 @@ public class AddExpenditureActivity extends Activity {
                 if (description.length() != 0 && price.length() != 0 && paidBy.length() != 0) {
                     Float float_price = Float.parseFloat(price);
                     addData(description, float_price, paidBy);
+                    addContribution(float_price, paidBy);
                     String method = spinner_method.getSelectedItem().toString();
                     if (method.equals("Equally")) {
                         Integer numberOfMembers = spinner_paidBy.getAdapter().getCount();
@@ -84,6 +85,10 @@ public class AddExpenditureActivity extends Activity {
 
     public void addExpenditureEqually(Float expenditure) {
         mDatabaseHelper.addExpenditureEqually(expenditure);
+    }
+
+    public void addContribution(Float price, String name) {
+        mDatabaseHelper.addContribution(price, name);
     }
 
     private void toastMessage(String message) {
