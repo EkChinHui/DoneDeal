@@ -28,7 +28,7 @@ public class AddExpenditureActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addexpenditurelayout);
-        Toolbar addExpenditureToolbar = (Toolbar) findViewById(R.id.addexpendituretoolbar);
+        Toolbar addExpenditureToolbar = findViewById(R.id.addexpendituretoolbar);
         setSupportActionBar(addExpenditureToolbar);
         btn_addExpenditure = findViewById(R.id.btn_addexpenditure);
         btn_viewExpenditure = findViewById(R.id.btn_viewexpenditure);
