@@ -125,7 +125,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Integer id = c.getInt(c.getColumnIndex(COL0));
             Float currentContribution = c.getFloat(c.getColumnIndex(COL3));
             Float updatedContribution = currentContribution + price;
-            Log.d("test", id.toString());
             db.execSQL("UPDATE " + TABLE_NAME + " SET " + COL3 + " = '" + updatedContribution +
                     "' WHERE " + COL0 + " = '" + id + "'");
         }
