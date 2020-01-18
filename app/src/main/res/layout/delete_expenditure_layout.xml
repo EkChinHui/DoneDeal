@@ -1,29 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayout2"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/textView_show_description"
-        android:layout_width="match_parent"
-        android:layout_height="67dp"
-        android:text="Description" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Description"
+        app:layout_constraintBottom_toTopOf="@+id/textView_show_amount"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView_show_amount"
-        android:layout_width="match_parent"
-        android:layout_height="59dp"
-        android:text="Amount" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Amount"
+        app:layout_constraintBottom_toTopOf="@+id/textView_show_paidBy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_show_description" />
 
     <TextView
         android:id="@+id/textView_show_paidBy"
-        android:layout_width="match_parent"
-        android:layout_height="74dp"
-        android:text="Paid By:" />
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="Paid By:"
+        app:layout_constraintBottom_toTopOf="@+id/btn_delete_expenditure"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_show_amount" />
 
     <Button
         android:id="@+id/btn_delete_expenditure"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Delete" />
-</LinearLayout>
+        android:layout_marginBottom="483dp"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_show_paidBy" />
+</androidx.constraintlayout.widget.ConstraintLayout>
