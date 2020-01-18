@@ -2,17 +2,22 @@ package com.nus.donedeal;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SummaryActivity extends AppCompatActivity {
     DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
     String[] names_arr;
     Float[] expenditures_arr, contributions_arr, net;
+    ListView listViewSummary;
+    ArrayList<String> log;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +25,7 @@ public class SummaryActivity extends AppCompatActivity {
         ArrayList<String> names = mDatabaseHelper.getAllNames();
         ArrayList<Float> expenditures = mDatabaseHelper.getAllExpenditure();
         ArrayList<Float> contributions = mDatabaseHelper.getAllContribution();
+        listViewSummary = findViewById(R.id.listViewSummary);
         int size = names.size();
         names_arr = new String[size];
         expenditures_arr = new Float[size];
@@ -36,12 +42,13 @@ public class SummaryActivity extends AppCompatActivity {
         Float[] creditorsValue = getValues(creditorsIndex);
         sort(debtorsValue, debtorsIndex);
         sort(creditorsValue, creditorsIndex);
-        Log.d("debtorsvalue", Arrays.toString(debtorsValue));
-        Log.d("creditorsvalue", Arrays.toString(creditorsValue));
-        ArrayList<String> log = settle(debtorsValue, debtorsIndex, creditorsValue, creditorsIndex);
-        for (int i = 0; i < log.size(); i++) {
-            Log.d("fuck", log.get(i));
-        }
+        log = settle(debtorsValue, debtorsIndex, creditorsValue, creditorsIndex);
+        populateListView();
+    }
+
+    private void populateListView() {
+        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, log);
+        listViewSummary.setAdapter(adapter);
     }
     //Owes money if >0 (debtors)
     public Float[] getNet(Float[] expenditures_arr, Float[] contributions_arr) {
@@ -136,7 +143,6 @@ public class SummaryActivity extends AppCompatActivity {
                 for (int j = lenCred - 1; j >= 0; j--) {
                     if (creditorsValue[j] != 0) {
                         if (-creditorsValue[j] > debtorsValue[i]) {
-                            Log.d("Value", debtorsValue[i].toString());
                             String log = names_arr[debtorsIndex[i]] + " pays " + names_arr[creditorsIndex[j]] + " " + debtorsValue[i];
                             creditorsValue[j] += debtorsValue[i];
                             debtorsValue[i] -= debtorsValue[i];

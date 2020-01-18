@@ -23,7 +23,7 @@ public class NamesActivity extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nameslayout);
-        v_listview = findViewById(R.id.v_listview);
+        v_listview = findViewById(R.id.listViewNames);
         mDatabaseHelper = new DatabaseHelper(this);
 
         populateListView();
