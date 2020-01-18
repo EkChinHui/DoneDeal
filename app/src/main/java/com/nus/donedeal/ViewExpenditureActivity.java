@@ -16,6 +16,8 @@ import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
+
 
 public class ViewExpenditureActivity extends Activity {
     ListView listViewExpense;
@@ -23,6 +25,7 @@ public class ViewExpenditureActivity extends Activity {
     String description, paidBy;
     Float amount;
     Cursor data;
+    ThreeStrings threeStrings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,23 +38,28 @@ public class ViewExpenditureActivity extends Activity {
     }
     private void populateListView() {
         data = databaseHelper1.getData(); //cursor
-        ArrayList<String> listData = new ArrayList<>();
+        List<ThreeStrings> threeStringsList = new ArrayList<>();
+//        ThreeStrings threeStrings1 = new ThreeStrings("a", "b", (float) 0.1);
         while(data.moveToNext()) {
-            listData.add(data.getString(1));
+            threeStrings = new ThreeStrings(data.getString(1), data.getString(3), data.getFloat(2));
+            threeStringsList.add(threeStrings);
         }
-        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
-        listViewExpense.setAdapter(adapter);
+        ThreeHorizontalTextViewsAdapter threeHorizontalTextViewsAdapter = new ThreeHorizontalTextViewsAdapter(this, R.layout.three_columns_listview, threeStringsList);
+        listViewExpense.setAdapter(threeHorizontalTextViewsAdapter);
         listViewExpense.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                String name = adapterView.getItemAtPosition(position).toString();
+                ThreeStrings checker = (ThreeStrings) adapterView.getItemAtPosition(position);
+                String name = checker.getLeft();
+                Log.i("TESTTTTTT", "onItemClick: " + name);
                 Cursor data = databaseHelper1.getItemID(name);
                 int itemID = -1;
+//                data.moveToFirst ();
                 while (data.moveToNext()) {
                     itemID = data.getInt(0);
-                    description = data.getString(1);
-                    amount = data.getFloat(2);
-                    paidBy = data.getString(3);
+                    description = databaseHelper1.getExpenseRow(itemID)[0];
+                    amount = Float.parseFloat(databaseHelper1.getExpenseRow(itemID)[1]);
+                    paidBy = databaseHelper1.getExpenseRow(itemID)[2];
                 }
                 if (itemID > -1) {
                     Intent intent = new Intent(ViewExpenditureActivity.this, DeleteExpenditureActivity.class);

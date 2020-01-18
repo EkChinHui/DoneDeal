@@ -7,15 +7,30 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <TextView
         android:id="@+id/text_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:text="Description"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar2"
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editText_description"
@@ -52,59 +67,63 @@
 
     <TextView
         android:id="@+id/text_paidby"
-        android:layout_width="50dp"
+        android:layout_width="60dp"
         android:layout_height="30dp"
         android:layout_margin="10dp"
+        android:gravity="center"
         android:text="Paid By:"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.266" />
+        app:layout_constraintVertical_bias="0.358" />
 
     <Spinner
         android:id="@+id/spinner_paidBy"
-        android:layout_width="50dp"
+        android:layout_width="100dp"
         android:layout_height="30dp"
         android:layout_margin="10dp"
-        android:background="#33d9b2"
+        android:background="#f1f2f6"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.191"
+        app:layout_constraintHorizontal_bias="0.257"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.266" />
+        app:layout_constraintVertical_bias="0.362" />
 
     <TextView
         android:id="@+id/text_split"
-        android:layout_width="50dp"
-        android:layout_height="20dp"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
         android:layout_margin="10dp"
+        android:gravity="center"
         android:text="Split"
+        android:textAlignment="gravity"
         android:textColor="#000000"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.373"
+        app:layout_constraintHorizontal_bias="0.601"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268" />
+        app:layout_constraintVertical_bias="0.362" />
 
     <Spinner
         android:id="@+id/spinner_method"
         android:layout_width="100dp"
-        android:layout_height="20dp"
+        android:layout_height="30dp"
         android:layout_margin="10dp"
-        android:background="#33d9b2"
+        android:background="#f1f2f6"
         android:entries="@array/method"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.627"
+        app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268" />
+        app:layout_constraintVertical_bias="0.366" />
 
     <Button
         android:id="@+id/btn_addexpenditure"
@@ -112,9 +131,9 @@
         android:layout_height="100dp"
         android:background="@drawable/addexpenditure_button"
         android:fontFamily="sans-serif-condensed"
-        android:text="+"
+        android:text="save"
         android:textColor="#ffffff"
-        android:textSize="36sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.948"

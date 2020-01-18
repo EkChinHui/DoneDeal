@@ -74,13 +74,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(query);
     }
 
-    public void updateExpenditure(Float newExpenditure, int id, String name) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        String query = "UPDATE " + TABLE_NAME + " SET " + COL2 + " = '" + newExpenditure + "' WHERE" + COL0 +
-                       " = '" + id + "' AND " + COL1 + " = '" + name + "'";
-        db.execSQL(query);
-    }
-
     public void deleteName(int id, String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + COL0 + " = '" + id + "' AND " + COL1 +
@@ -110,11 +103,31 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         c.moveToFirst();
         if (c != null) {
             while (!c.isAfterLast()) {
+                Integer id = c.getInt(c.getColumnIndex(COL0));
                 Float currentExpenditure = c.getFloat(c.getColumnIndex(COL2));
                 Float updatedExpenditure = currentExpenditure + expenditure;
-                db.execSQL("UPDATE " + TABLE_NAME + " SET " + COL2 + " = '" + updatedExpenditure + "'");
+                db.execSQL("UPDATE " + TABLE_NAME + " SET " + COL2 + " = '" + updatedExpenditure +
+                           "' WHERE " + COL0 + " = '" + id + "'");
                 c.moveToNext();
             }
+        }
+    }
+
+    public void addContribution(Float price, String name) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor c = db.rawQuery(query, null);
+        c.moveToFirst();
+        if (c != null) {
+            while (!c.getString(c.getColumnIndex(COL1)).equals(name)) {
+                c.moveToNext();
+            }
+            Integer id = c.getInt(c.getColumnIndex(COL0));
+            Float currentContribution = c.getFloat(c.getColumnIndex(COL3));
+            Float updatedContribution = currentContribution + price;
+            Log.d("test", id.toString());
+            db.execSQL("UPDATE " + TABLE_NAME + " SET " + COL3 + " = '" + updatedContribution +
+                    "' WHERE " + COL0 + " = '" + id + "'");
         }
     }
 }

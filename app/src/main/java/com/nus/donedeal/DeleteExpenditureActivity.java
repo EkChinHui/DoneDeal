@@ -8,7 +8,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class DeleteExpenditureActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class DeleteExpenditureActivity extends AppCompatActivity {
     TextView textDescription, textAmount, textPaidBy;
     Button btn_delete;
     DatabaseHelper1 databaseHelper1;
