@@ -64,3 +64,4 @@ public class NamesActivity extends Activity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
+
