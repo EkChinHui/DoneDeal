@@ -4,7 +4,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textView_splitManualName"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:layout_weight="0.5"
@@ -12,14 +12,13 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editText_splitManually"
         style="@style/Widget.AppCompat.EditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
 </LinearLayout>

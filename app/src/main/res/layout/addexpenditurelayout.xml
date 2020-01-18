@@ -160,13 +160,24 @@
 
     <ListView
         android:id="@+id/EditTextListView"
-        android:layout_width="215dp"
-        android:layout_height="71dp"
-        android:layout_marginTop="168dp"
+        android:layout_width="329dp"
+        android:layout_height="157dp"
+        android:layout_marginTop="19dp"
+        android:layout_marginBottom="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_viewexpenditure"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_viewexpenditure" />
+
+    <Button
+        android:id="@+id/btn_splitmanually"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="manual"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btn_addexpenditure"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/btn_addexpenditure" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

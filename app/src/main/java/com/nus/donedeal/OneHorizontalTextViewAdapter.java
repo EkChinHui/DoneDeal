@@ -30,15 +30,14 @@ public class OneHorizontalTextViewAdapter extends ArrayAdapter<OneString> {
         }
 
         OneString oneString = getItem(position);
-/*
-        if (oneString != null) {
-            EditText centreTextView = view.findViewById(R.id.split_amount);
 
-            if (centreTextView != null) {
-                centreTextView.setText(oneString.getCentre().toString());
+        if (oneString != null) {
+            TextView name = view.findViewById(R.id.textView_splitManualName);
+            if (name != null) {
+                name.setText(oneString.getName());
             }
         }
-        */
+
         return view;
     }
 }

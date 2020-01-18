@@ -21,16 +21,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AddExpenditureActivity extends AppCompatActivity {
-    Button btn_addExpenditure, btn_viewExpenditure;
+    Button btn_addExpenditure, btn_viewExpenditure, btn_splitmanual;
     EditText editText_description, editText_amount;
     Spinner spinner_paidBy, spinner_method;
     DatabaseHelper1 mDatabaseHelper1;
     DatabaseHelper mDatabaseHelper;
     ArrayList<String> allNames;
 
-    DatabaseHelper1 databaseHelper1;
     Cursor data;
-//    OneString oneString;
+    OneString oneString;
     ListView listViewSplit;
 
     @Override
@@ -41,6 +40,7 @@ public class AddExpenditureActivity extends AppCompatActivity {
         setSupportActionBar(addExpenditureToolbar);
         btn_addExpenditure = findViewById(R.id.btn_addexpenditure);
         btn_viewExpenditure = findViewById(R.id.btn_viewexpenditure);
+        btn_splitmanual = findViewById(R.id.btn_splitmanually);
         editText_description = findViewById(R.id.editText_description);
         editText_amount = findViewById(R.id.editText_amount);
         spinner_paidBy = findViewById(R.id.spinner_paidBy);
@@ -48,7 +48,6 @@ public class AddExpenditureActivity extends AppCompatActivity {
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper1 = new DatabaseHelper1(this);
         allNames = mDatabaseHelper.getAllNames();
-
 
 
         btn_addExpenditure.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +71,25 @@ public class AddExpenditureActivity extends AppCompatActivity {
                         toastMessage("Split Equally");
                     } else if (method.equals("Manually")) {
                         toastMessage("Split Manually");
+                        populateSplitListView();
+                        btn_splitmanual.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                Integer numberOfMembers = spinner_paidBy.getAdapter().getCount();
+                                try {
+                                    for (int i = 1; i <= numberOfMembers; i++) {
+                                        OneString checker = (OneString) listViewSplit.getItemAtPosition(i-1);
+                                        Log.d("TEST", "onClick: " + checker.toString());
+                                        Float expenses = checker.getPrice();
+                                        Log.d("TEST", "onClick: " + expenses.toString());
+                                        addExpendtitureManually(expenses, i);
+                                    }
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
+
+                            }
+                        });
                     }
                 }
                 else {
@@ -93,6 +111,21 @@ public class AddExpenditureActivity extends AppCompatActivity {
         spinner_paidBy.setAdapter(adapter);
     }
 
+    private void populateSplitListView() {
+        listViewSplit = findViewById(R.id.EditTextListView);
+        data = mDatabaseHelper.getData(); //cursor
+        List<OneString> oneStringList = new ArrayList<>();
+        while(data.moveToNext()) {
+            oneString = new OneString(data.getString(1), (float) 0);
+            oneStringList.add(oneString);
+        }
+        OneHorizontalTextViewAdapter oneHorizontalTextViewAdapter = new OneHorizontalTextViewAdapter(this, R.layout.split_manually_edittext, oneStringList);
+        listViewSplit.setAdapter(oneHorizontalTextViewAdapter);
+
+
+
+    }
+
     public void addData(String description, Float price, String paidBy) {
         boolean insertData = mDatabaseHelper1.addData(description, price, paidBy);
         if (insertData) {
@@ -105,6 +138,10 @@ public class AddExpenditureActivity extends AppCompatActivity {
 
     public void addExpenditureEqually(Float expenditure) {
         mDatabaseHelper.addExpenditureEqually(expenditure);
+    }
+
+    public void addExpendtitureManually(Float expenditure, int id) {
+        mDatabaseHelper.addExpenditureManually(expenditure, id);
     }
 
     public void addContribution(Float price, String name) {

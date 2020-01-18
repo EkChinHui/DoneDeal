@@ -119,6 +119,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    public void addExpenditureManually(Float expenditure, int id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor c = db.rawQuery(query, null);
+        for(int i = 0; i < id; i++) {
+            c.moveToNext();
+        }
+        Float currentExpenditure = c.getFloat(c.getColumnIndex(COL2));
+        Float updatedExpenditure = currentExpenditure + expenditure;
+        db.execSQL("UPDATE " + TABLE_NAME + " SET " + COL2 + " = '" + updatedExpenditure +
+                "' WHERE " + COL0 + " = '" + id + "'");
+    }
+
+
     public void addContribution(Float price, String name) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
