@@ -8,18 +8,18 @@
     android:background="#ffffff">
 
     <androidx.appcompat.widget.Toolbar
-    android:id="@+id/addexpendituretoolbar"
-    android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
-    android:background="?attr/colorPrimary"
-    android:minHeight="?attr/actionBarSize"
-    android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-    android:elevation="4dp"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.0" />
+        android:id="@+id/addexpendituretoolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <TextView
         android:id="@+id/text_description"
@@ -149,13 +149,24 @@
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
         android:background="@drawable/addexpenditure_button"
-        android:textColor="#ffffff"
         android:text="view expenditure"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editText_description"
         app:layout_constraintVertical_bias="0.35" />
+
+    <ListView
+        android:id="@+id/EditTextListView"
+        android:layout_width="215dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="168dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_viewexpenditure"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

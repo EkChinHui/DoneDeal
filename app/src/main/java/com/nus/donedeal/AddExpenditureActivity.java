@@ -1,11 +1,15 @@
 package com.nus.donedeal;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -14,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class AddExpenditureActivity extends AppCompatActivity {
     Button btn_addExpenditure, btn_viewExpenditure;
@@ -22,6 +27,11 @@ public class AddExpenditureActivity extends AppCompatActivity {
     DatabaseHelper1 mDatabaseHelper1;
     DatabaseHelper mDatabaseHelper;
     ArrayList<String> allNames;
+
+    DatabaseHelper1 databaseHelper1;
+    Cursor data;
+    OneString oneString;
+    ListView listViewSplit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +48,7 @@ public class AddExpenditureActivity extends AppCompatActivity {
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper1 = new DatabaseHelper1(this);
         allNames = mDatabaseHelper.getAllNames();
+
 
 
         btn_addExpenditure.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +93,7 @@ public class AddExpenditureActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner_paidBy.setAdapter(adapter);
     }
+
     public void addData(String description, Float price, String paidBy) {
         boolean insertData = mDatabaseHelper1.addData(description, price, paidBy);
         if (insertData) {
