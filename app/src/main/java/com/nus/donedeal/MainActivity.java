@@ -10,11 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.OnLifecycleEvent;
-
 public class MainActivity extends Activity {
-    Button btn_enter, btn_addexpenditure, btn_show, btn_reset;
+    Button btn_enter, btn_show, btn_reset;
     TextView tripName;
     DatabaseHelper databaseHelper;
     DatabaseHelper1 databaseHelper1;
