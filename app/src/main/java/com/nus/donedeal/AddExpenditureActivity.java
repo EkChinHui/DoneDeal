@@ -30,7 +30,7 @@ public class AddExpenditureActivity extends AppCompatActivity {
 
     DatabaseHelper1 databaseHelper1;
     Cursor data;
-    OneString oneString;
+//    OneString oneString;
     ListView listViewSplit;
 
     @Override
