@@ -56,13 +56,13 @@ public class ViewExpenditureActivity extends Activity {
                     Intent intent = new Intent(ViewExpenditureActivity.this, DeleteExpenditureActivity.class);
                     finish();
                     intent.putExtra("id", itemID);
-                    intent.putExtra("description", description);
+                    intent.putExtra("Description", description);
                     intent.putExtra("Amount", amount);
                     intent.putExtra("Paid By", paidBy);
                     startActivity(intent);
                 }
                 else {
-                    toastMessage("No such name");
+                    toastMessage("Expense doesn't exist");
                 }
             }
         });
