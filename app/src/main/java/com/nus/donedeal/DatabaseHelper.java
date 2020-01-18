@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_NAME = "Table_1";
@@ -74,5 +77,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         String query = "DELETE FROM " + TABLE_NAME + " WHERE " + COL0 + " = '" + id + "' AND " + COL1 +
                        " = '" + name + "'";
         db.execSQL(query);
+    }
+
+    public ArrayList<String> getAllNames() {
+        ArrayList<String> arrayList = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor data = db.rawQuery(query, null);
+        data.moveToFirst();
+        if (data != null) {
+            while (data.isAfterLast() == false) {
+                arrayList.add(data.getString(data.getColumnIndex(COL1)));
+                data.moveToNext();
+            }
+        }
+        return arrayList;
     }
 }

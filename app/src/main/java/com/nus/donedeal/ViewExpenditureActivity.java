@@ -3,12 +3,16 @@ package com.nus.donedeal;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,17 +22,19 @@ public class ViewExpenditureActivity extends Activity {
     DatabaseHelper1 databaseHelper1;
     String description, paidBy;
     Float amount;
+    Cursor data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_expenditure_layout);
+        listViewExpense = findViewById(R.id.listViewExpenses);
         databaseHelper1 = new DatabaseHelper1(this);
 
         populateListView();
     }
     private void populateListView() {
-        Cursor data = databaseHelper1.getData();
+        data = databaseHelper1.getData(); //cursor
         ArrayList<String> listData = new ArrayList<>();
         while(data.moveToNext()) {
             listData.add(data.getString(1));

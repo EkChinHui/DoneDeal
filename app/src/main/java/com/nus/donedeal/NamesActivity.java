@@ -18,6 +18,7 @@ import java.util.ArrayList;
 public class NamesActivity extends Activity {
     ListView v_listview;
     DatabaseHelper mDatabaseHelper;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
