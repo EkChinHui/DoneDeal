@@ -10,7 +10,9 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import java.util.ArrayList;
 
@@ -26,6 +28,8 @@ public class AddExpenditureActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addexpenditurelayout);
+        Toolbar addExpenditureToolbar = (Toolbar) findViewById(R.id.addexpendituretoolbar);
+        setSupportActionBar(addExpenditureToolbar);
         btn_addExpenditure = findViewById(R.id.btn_addexpenditure);
         btn_viewExpenditure = findViewById(R.id.btn_viewexpenditure);
         editText_description = findViewById(R.id.editText_description);
