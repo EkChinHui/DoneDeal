@@ -23,7 +23,7 @@ public class MainActivity extends Activity {
         if (getStatus() == 0) {
             btn_reset.setVisibility(View.GONE);
             btn_show.setVisibility(View.GONE);
-            tripName.setText("Done Deal");
+            tripName.setText("DoneDeal");
         } else {
             btn_reset.setVisibility(View.VISIBLE);
             btn_show.setVisibility(View.VISIBLE);
@@ -63,12 +63,14 @@ public class MainActivity extends Activity {
         btn_reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setStatus();
-                setTripName();
-                endTrip();
-                Toast.makeText(MainActivity.this, "Trip Completed", Toast.LENGTH_SHORT).show();
-                finish();
-                startActivity(getIntent());
+                Intent intent = new Intent(getApplicationContext(), SummaryActivity.class);
+                startActivity(intent);
+//                setStatus();
+//                setTripName();
+//                endTrip();
+//                Toast.makeText(MainActivity.this, "Trip Completed", Toast.LENGTH_SHORT).show();
+//                finish();
+//                startActivity(getIntent());
             }
         });
 

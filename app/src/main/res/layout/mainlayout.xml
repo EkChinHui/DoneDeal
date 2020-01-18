@@ -71,7 +71,6 @@
         android:layout_height="100dp"
         android:background="@drawable/custom_button"
         android:fontFamily="sans-serif-condensed"
-        android:text="show"
         android:textColor="#ffffff"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

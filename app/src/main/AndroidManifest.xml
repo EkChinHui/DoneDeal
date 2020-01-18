@@ -20,6 +20,7 @@
         <activity android:name=".ViewExpenditureActivity"></activity>
         <activity android:name=".DeleteExpenditureActivity"></activity>
         <activity android:name=".ShowActivity"></activity>
+        <activity android:name=".SummaryActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
