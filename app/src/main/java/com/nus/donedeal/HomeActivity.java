@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,18 +12,18 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-import java.util.prefs.PreferenceChangeEvent;
 
 public class HomeActivity extends Activity {
     DatabaseHelper mDatabaseHelper;
     Button btn_add, btn_view, btn_confirm;
-    EditText t_name;
+    EditText t_name, t_tripName;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homelayout);
         btn_add = findViewById(R.id.btn_add);
         t_name = findViewById(R.id.t_name);
+        t_tripName = findViewById(R.id.editText_tripName);
         mDatabaseHelper = new DatabaseHelper(this);
         btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,10 +50,15 @@ public class HomeActivity extends Activity {
         btn_confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setStatus();
-                finish();
-                Intent intent = new Intent(HomeActivity.this, AddExpenditureActivity.class);
-                startActivity(intent);
+                String tripName = t_tripName.getText().toString();
+                if(tripName.length() != 0) {
+                    changeStatus(tripName);
+                    finish();
+                    Intent intent = new Intent(HomeActivity.this, AddExpenditureActivity.class);
+                    startActivity(intent);
+                } else {
+                    toastMessage("Please enter a trip name.");
+                }
             }
         });
     }
@@ -73,11 +77,12 @@ public class HomeActivity extends Activity {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
-    private void setStatus() {
-            SharedPreferences sharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sharedPreferences.edit();
-            editor.putInt("Status", 1);
-            editor.apply();
+    private void changeStatus(String tripName) {
+        SharedPreferences sharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Status", 1);
+        editor.putString("TripName", tripName);
+        editor.apply();
     }
 
 }

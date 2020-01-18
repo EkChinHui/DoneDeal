@@ -1,6 +1,5 @@
 package com.nus.donedeal;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -39,6 +38,7 @@ public class AddExpenditureActivity extends AppCompatActivity {
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper1 = new DatabaseHelper1(this);
         allNames = mDatabaseHelper.getAllNames();
+
 
         btn_addExpenditure.setOnClickListener(new View.OnClickListener() {
             @Override
