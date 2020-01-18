@@ -36,6 +36,8 @@ public class SummaryActivity extends AppCompatActivity {
         Float[] creditorsValue = getValues(creditorsIndex);
         sort(debtorsValue, debtorsIndex);
         sort(creditorsValue, creditorsIndex);
+        Log.d("debtorsvalue", Arrays.toString(debtorsValue));
+        Log.d("creditorsvalue", Arrays.toString(creditorsValue));
         ArrayList<String> log = settle(debtorsValue, debtorsIndex, creditorsValue, creditorsIndex);
         for (int i = 0; i < log.size(); i++) {
             Log.d("fuck", log.get(i));
@@ -133,17 +135,20 @@ public class SummaryActivity extends AppCompatActivity {
             if (debtorsValue[i] != 0) {
                 for (int j = lenCred - 1; j >= 0; j--) {
                     if (creditorsValue[j] != 0) {
-                        if (-creditorsValue[j] >= debtorsValue[i]) {
-                            String log = names_arr[debtorsIndex[i]] + " pays " + names_arr[creditorsIndex[j]] + debtorsValue[i];
+                        if (-creditorsValue[j] > debtorsValue[i]) {
+                            Log.d("Value", debtorsValue[i].toString());
+                            String log = names_arr[debtorsIndex[i]] + " pays " + names_arr[creditorsIndex[j]] + " " + debtorsValue[i];
                             creditorsValue[j] += debtorsValue[i];
                             debtorsValue[i] -= debtorsValue[i];
                             result.add(log);
+                            break;
                         }
-                        else {
-                            String log = names_arr[debtorsIndex[i]] + " pays " + names_arr[creditorsIndex[j]] + (-creditorsValue[j]);
+                        else if (-creditorsValue[j] < debtorsValue[i]) {
+                            String log = names_arr[debtorsIndex[i]] + " pays " + names_arr[creditorsIndex[j]] + " " + (-creditorsValue[j]);
                             debtorsValue[i] += creditorsValue[j];
                             creditorsValue[j] -= creditorsValue[j];
                             result.add(log);
+                            break;
                         }
                     }
                 }
