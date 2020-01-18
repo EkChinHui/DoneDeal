@@ -10,9 +10,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import java.util.ArrayList;
 
-public class AddExpenditureActivity extends Activity {
+public class AddExpenditureActivity extends AppCompatActivity {
     Button btn_addExpenditure, btn_viewExpenditure;
     EditText editText_description, editText_amount;
     Spinner spinner_paidBy, spinner_method;
@@ -24,6 +28,8 @@ public class AddExpenditureActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.addexpenditurelayout);
+        Toolbar addExpenditureToolbar = (Toolbar) findViewById(R.id.addexpendituretoolbar);
+        setSupportActionBar(addExpenditureToolbar);
         btn_addExpenditure = findViewById(R.id.btn_addexpenditure);
         btn_viewExpenditure = findViewById(R.id.btn_viewexpenditure);
         editText_description = findViewById(R.id.editText_description);
@@ -40,6 +46,9 @@ public class AddExpenditureActivity extends Activity {
                 String description = editText_description.getText().toString();
                 String price = editText_amount.getText().toString();
                 String paidBy = spinner_paidBy.getSelectedItem().toString();
+
+                editText_amount.setText("");
+                editText_description.setText("");
                 if (description.length() != 0 && price.length() != 0 && paidBy.length() != 0) {
                     Float float_price = Float.parseFloat(price);
                     addData(description, float_price, paidBy);
