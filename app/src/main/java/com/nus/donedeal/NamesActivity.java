@@ -16,14 +16,14 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 public class NamesActivity extends Activity {
-    ListView v_listview;
+    ListView listViewNames;
     DatabaseHelper mDatabaseHelper;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.nameslayout);
-        v_listview = findViewById(R.id.listViewNames);
+        listViewNames = findViewById(R.id.listViewNames);
         mDatabaseHelper = new DatabaseHelper(this);
 
         populateListView();
@@ -36,8 +36,8 @@ public class NamesActivity extends Activity {
             listData.add(data.getString(1));
         }
         ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listData);
-        v_listview.setAdapter(adapter);
-        v_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        listViewNames.setAdapter(adapter);
+        listViewNames.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
                 String name = adapterView.getItemAtPosition(position).toString();
