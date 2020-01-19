@@ -18,7 +18,7 @@
         android:text="Edit Deal"
         android:textColor="#ffffff"
         android:textSize="24dp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,13 +32,13 @@
         android:gravity="center_vertical"
         android:text="Description:"
         android:textSize="18sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.199" />
+        app:layout_constraintVertical_bias="0.235" />
 
     <TextView
         android:id="@+id/textView_show_amount"
@@ -49,13 +49,13 @@
         android:gravity="center_vertical"
         android:text="Amount:"
         android:textSize="18sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.141" />
+        app:layout_constraintVertical_bias="0.178" />
 
     <TextView
         android:id="@+id/textView_show_paidBy"
@@ -64,15 +64,15 @@
         android:height="40sp"
         android:fontFamily="@font/advent_pro_light"
         android:gravity="center_vertical"
-        android:text="Paid By:"
+        android:text="Paid by:"
         android:textSize="18sp"
-        android:textStyle="bold"
+        android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.083" />
+        app:layout_constraintVertical_bias="0.12" />
 
     <Button
         android:id="@+id/btn_delete_expenditure"
@@ -89,5 +89,5 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintVertical_bias="0.338" />
 </androidx.constraintlayout.widget.ConstraintLayout>

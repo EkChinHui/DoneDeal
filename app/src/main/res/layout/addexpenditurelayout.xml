@@ -7,19 +7,23 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/addexpendituretoolbar"
+    <TextView
+        android:id="@+id/textView4"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:minHeight="?attr/actionBarSize"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="40dp"
+        android:background="#31D4A3"
+        android:drawableLeft="@drawable/ic_add_circle_outline_black_24dp"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/advent_pro_light"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:text="New Deal"
+        android:textColor="#ffffff"
+        android:textSize="24dp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/text_description"
@@ -43,10 +47,10 @@
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.842"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/addexpendituretoolbar"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.12" />
 
     <TextView
         android:id="@+id/text_amount"
@@ -70,10 +74,10 @@
         android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.526"
+        app:layout_constraintHorizontal_bias="0.157"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/addexpendituretoolbar"
-        app:layout_constraintVertical_bias="0.259" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.249" />
 
     <TextView
         android:id="@+id/text_paidby"
@@ -81,7 +85,7 @@
         android:layout_height="30dp"
         android:layout_margin="10dp"
         android:gravity="center"
-        android:text="Paid By:"
+        android:text="Paid by:"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
