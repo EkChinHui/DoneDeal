@@ -64,7 +64,7 @@
         android:id="@+id/listViewExpenses"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:divider="#3A9102"
+        android:divider="#31D4A3"
         android:dividerHeight="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
