@@ -10,6 +10,11 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * Edit names page after clicking a name entry
+ * user has the choice of editing or deleting a name entry
+ */
+
 public class EditNamesActivity extends AppCompatActivity {
     Button btn_save, btn_delete;
     EditText t_editName;

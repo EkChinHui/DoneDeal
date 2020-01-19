@@ -3,12 +3,15 @@ package com.nus.donedeal;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * After submitting an expenditure,
+ * the expenditure can be deleted if a mistake was made
+ */
 
 public class DeleteExpenditureActivity extends Activity {
     TextView textDescription, textAmount, textPaidBy;
@@ -17,7 +20,6 @@ public class DeleteExpenditureActivity extends Activity {
     Integer selectedID;
     String selectedDescription, selectedPaidBy;
     Float selectedAmount;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

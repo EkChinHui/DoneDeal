@@ -11,6 +11,11 @@ import android.widget.TextView;
 
 import java.util.List;
 
+/**
+ * this code is unused, originally intended to implement split
+ * manually function
+ */
+
 public class OneHorizontalTextViewAdapter extends ArrayAdapter<OneString> {
 
     private int layoutResource;

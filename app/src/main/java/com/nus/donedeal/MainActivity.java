@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
+
+/**
+ * Main page of the app
+ */
 
 public class MainActivity extends AppCompatActivity {
     Button btn_enter, btn_show, btn_reset;
@@ -78,13 +81,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private Integer getStatus() {
+    private Integer getStatus() { // switch that checks whether members and trip name has been declared
         SharedPreferences sharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
         Integer status = sharedPreferences.getInt("Status", 0);
         return status;
     }
 
-    private String getTripName() {
+    private String getTripName() { //changes appname to trip name entered
         SharedPreferences sharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
         String tripName = sharedPreferences.getString("TripName", "");
         return tripName;

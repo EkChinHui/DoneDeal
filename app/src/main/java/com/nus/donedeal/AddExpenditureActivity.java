@@ -3,22 +3,23 @@ package com.nus.donedeal;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
-
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * Add expenditure activity takes in 4 parameters
+ * description, price, paid by as well as split method (which we currently only have split equally)
+ * and adds them into expenses list so it can be tracked
+ */
 
 public class AddExpenditureActivity extends AppCompatActivity {
     Button btn_addExpenditure, btn_viewExpenditure, btn_splitmanual;
@@ -50,7 +51,12 @@ public class AddExpenditureActivity extends AppCompatActivity {
         allNames = mDatabaseHelper.getAllNames();
         btn_splitmanual.setVisibility(View.GONE);
 
+        //creates a dropdown list of names to easily select who paid for an item
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, allNames);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner_paidBy.setAdapter(adapter);
 
+        //on button click it should send what has been entered into their respective databases
         btn_addExpenditure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -72,6 +78,9 @@ public class AddExpenditureActivity extends AppCompatActivity {
                         toastMessage("Split Equally");
                     } else if (method.equals("Manually")) {
                         toastMessage("Split Manually not available");
+                        // the following code that has been commented out was an attempt to split expenses manually
+                        // based on the amounnt per person for the item and each amount will be added to a database
+
 //                        populateSplitListView();
 //                        btn_splitmanual.setVisibility(View.VISIBLE);
 //                        btn_splitmanual.setOnClickListener(new View.OnClickListener() {
@@ -102,17 +111,13 @@ public class AddExpenditureActivity extends AppCompatActivity {
             }
         });
 
-        btn_viewExpenditure.setOnClickListener(new View.OnClickListener() {
+        btn_viewExpenditure.setOnClickListener(new View.OnClickListener() { //opens expenditure table for user to see
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AddExpenditureActivity.this, ViewExpenditureActivity.class);
                 startActivity(intent);
             }
         });
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, allNames);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner_paidBy.setAdapter(adapter);
     }
 
     private void populateSplitListView() {
@@ -127,18 +132,7 @@ public class AddExpenditureActivity extends AppCompatActivity {
         listViewSplit.setAdapter(oneHorizontalTextViewAdapter);
     }
 
-    private void repopulateSplitListView() {
-        listViewSplit = findViewById(R.id.EditTextListView);
-        data = mDatabaseHelper.getData(); //cursor
-        List<OneString> oneStringList = new ArrayList<>();
-        while(data.moveToNext()) {
-            oneString = new OneString(data.getString(1), (float) 10);
-            oneStringList.add(oneString);
-        }
-        OneHorizontalTextViewAdapter oneHorizontalTextViewAdapter = new OneHorizontalTextViewAdapter(this, R.layout.split_manually_edittext, oneStringList);
-        listViewSplit.setAdapter(oneHorizontalTextViewAdapter);
-    }
-
+    // inserts data into expenses database
     public void addData(String description, Float price, String paidBy) {
         boolean insertData = mDatabaseHelper1.addData(description, price, paidBy);
         if (insertData) {
@@ -149,14 +143,17 @@ public class AddExpenditureActivity extends AppCompatActivity {
         }
     }
 
+    // adds individual expenditure into database
     public void addExpenditureEqually(Float expenditure) {
         mDatabaseHelper.addExpenditureEqually(expenditure);
     }
 
+    // attempt to add expenditure manually
     public void addExpendtitureManually(Float expenditure, int id) {
         mDatabaseHelper.addExpenditureManually(expenditure, id);
     }
 
+    // contribution is added for whoever paid for the item first
     public void addContribution(Float price, String name) {
         mDatabaseHelper.addContribution(price, name);
     }

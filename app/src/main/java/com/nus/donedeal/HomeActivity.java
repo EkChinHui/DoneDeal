@@ -12,6 +12,13 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
+/**
+ * Activity to enter trip name and add members
+ * after which the members can be viewed
+ * when all members have been added
+ * trip can be confirmed and expenditure can be added
+ * (members can no longer be added after confirmation)
+ */
 
 public class HomeActivity extends Activity {
     DatabaseHelper mDatabaseHelper;
@@ -80,8 +87,8 @@ public class HomeActivity extends Activity {
     private void changeStatus(String tripName) {
         SharedPreferences sharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("Status", 1);
-        editor.putString("TripName", tripName);
+        editor.putInt("Status", 1); //switch so that plus button in main page no longer leads to this activity
+        editor.putString("TripName", tripName); // changes the trip name in main page
         editor.apply();
     }
 

@@ -6,6 +6,15 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+/**
+ * This database based on SQLITE
+ * keeps track of all expenditure during the trip
+ * with the characteristics of each expenditure being:
+ * Description, price and paid by
+ * it includes functions for easy access and
+ * manipulation of the database
+ */
+
 public class DatabaseHelper1 extends SQLiteOpenHelper {
 
     public SQLiteDatabase db;

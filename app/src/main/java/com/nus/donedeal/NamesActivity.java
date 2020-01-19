@@ -10,10 +10,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-
 import androidx.annotation.Nullable;
-
 import java.util.ArrayList;
+
+/**
+ * displays a list of members
+ * clicking a name will bring up the EditNamesActivity
+ */
 
 public class NamesActivity extends Activity {
     ListView listViewNames;
@@ -29,7 +32,7 @@ public class NamesActivity extends Activity {
         populateListView();
     }
 
-    private void populateListView() {
+    private void populateListView() { //fills up the listview with names from database
         Cursor data = mDatabaseHelper.getData();
         ArrayList<String> listData = new ArrayList<>();
         while(data.moveToNext()) {

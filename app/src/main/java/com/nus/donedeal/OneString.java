@@ -1,5 +1,10 @@
 package com.nus.donedeal;
 
+/**
+ * this code is unused, originally intended to implement split
+ * manually function
+ */
+
 public class OneString {
     private String name;
     private Float price;

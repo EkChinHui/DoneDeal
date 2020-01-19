@@ -8,6 +8,15 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
 
+/**
+ * This database based on SQLITE
+ * keeps track of each members
+ * name, expenditure and contribution
+ *
+ * it includes functions for easy access and
+ * manipulation of the database
+ */
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     public SQLiteDatabase db;
