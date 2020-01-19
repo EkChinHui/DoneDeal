@@ -1,15 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout6"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/paidby_header"
+        android:layout_width="147dp"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_weight="0.3"
+        android:background="@drawable/table_header_border"
+        android:gravity="center"
+        android:text="Paid by:"
+        android:textColor="#FFFFFF"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/listViewExpenses"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/description_header"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.007" />
+
+    <TextView
+        android:id="@+id/description_header"
+        android:layout_width="156dp"
+        android:layout_height="45dp"
+        android:layout_toStartOf="@+id/three_cols_paidBy"
+        android:layout_weight="0.3"
+        android:background="@drawable/table_header_border"
+        android:gravity="center"
+        android:text="Description"
+        android:textColor="#FFFFFF"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/listViewExpenses"
+        app:layout_constraintEnd_toStartOf="@+id/paidby_header"
+        app:layout_constraintStart_toEndOf="@+id/amount_header"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/amount_header"
+        android:layout_width="112dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="5dp"
+        android:layout_toStartOf="@+id/three_cols_description"
+        android:layout_weight="0.3"
+        android:background="@drawable/table_header_border"
+        android:gravity="center"
+        android:text="Amount"
+        android:textColor="#FFFFFF"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toTopOf="@+id/listViewExpenses"
+        app:layout_constraintEnd_toStartOf="@+id/description_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <ListView
         android:id="@+id/listViewExpenses"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
+        android:divider="#3A9102"
+        android:dividerHeight="1dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/description_header" />
 </androidx.constraintlayout.widget.ConstraintLayout>
