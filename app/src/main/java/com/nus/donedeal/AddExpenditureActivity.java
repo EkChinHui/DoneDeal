@@ -71,27 +71,29 @@ public class AddExpenditureActivity extends AppCompatActivity {
                         addExpenditureEqually(equalExpenditure);
                         toastMessage("Split Equally");
                     } else if (method.equals("Manually")) {
-                        toastMessage("Split Manually");
-                        populateSplitListView();
-                        btn_splitmanual.setVisibility(View.VISIBLE);
-                        btn_splitmanual.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View v) {
-                                Integer numberOfMembers = spinner_paidBy.getAdapter().getCount();
-                                try {
-                                    for (int i = 1; i <= numberOfMembers; i++) {
-                                        OneString checker = (OneString) listViewSplit.getItemAtPosition(i-1);
-                                        Log.d("TEST", "onClick: " + checker.toString());
-                                        Float expenses = checker.getPrice();
-                                        Log.d("TEST", "onClick: " + expenses.toString());
-                                        addExpendtitureManually(expenses, i);
-                                    }
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-
-                            }
-                        });
+                        toastMessage("Split Manually not available");
+//                        populateSplitListView();
+//                        btn_splitmanual.setVisibility(View.VISIBLE);
+//                        btn_splitmanual.setOnClickListener(new View.OnClickListener() {
+//                            @Override
+//                            public void onClick(View v) {
+//                                Integer numberOfMembers = spinner_paidBy.getAdapter().getCount();
+//                                try {
+//                                    for (int i = 1; i <= numberOfMembers; i++) {
+//                                        repopulateSplitListView();
+//                                        OneString checker = (OneString) listViewSplit.getItemAtPosition(i-1);
+//                                        Log.d("TEST", "onClick: " + checker.toString());
+//
+//                                        Float expenses = checker.getPrice();
+//                                        Log.d("TEST", "onClick: " + expenses.toString());
+//                                        addExpendtitureManually(expenses, i);
+//                                    }
+//                                } catch (Exception e) {
+//                                    e.printStackTrace();
+//                                }
+//
+//                            }
+//                        });
                     }
                 }
                 else {
@@ -118,14 +120,23 @@ public class AddExpenditureActivity extends AppCompatActivity {
         data = mDatabaseHelper.getData(); //cursor
         List<OneString> oneStringList = new ArrayList<>();
         while(data.moveToNext()) {
-            oneString = new OneString(data.getString(1), (float) 0);
+            oneString = new OneString(data.getString(1), (float) 10);
             oneStringList.add(oneString);
         }
         OneHorizontalTextViewAdapter oneHorizontalTextViewAdapter = new OneHorizontalTextViewAdapter(this, R.layout.split_manually_edittext, oneStringList);
         listViewSplit.setAdapter(oneHorizontalTextViewAdapter);
+    }
 
-
-
+    private void repopulateSplitListView() {
+        listViewSplit = findViewById(R.id.EditTextListView);
+        data = mDatabaseHelper.getData(); //cursor
+        List<OneString> oneStringList = new ArrayList<>();
+        while(data.moveToNext()) {
+            oneString = new OneString(data.getString(1), (float) 10);
+            oneStringList.add(oneString);
+        }
+        OneHorizontalTextViewAdapter oneHorizontalTextViewAdapter = new OneHorizontalTextViewAdapter(this, R.layout.split_manually_edittext, oneStringList);
+        listViewSplit.setAdapter(oneHorizontalTextViewAdapter);
     }
 
     public void addData(String description, Float price, String paidBy) {
