@@ -1,23 +1,29 @@
 package com.nus.donedeal;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class SummaryActivity extends AppCompatActivity {
+    public static DatabaseHelper instance;
     DatabaseHelper mDatabaseHelper = new DatabaseHelper(this);
     String[] names_arr;
     Float[] expenditures_arr, contributions_arr, net;
     ListView listViewSummary;
     ArrayList<String> log;
+    Button btn_settle;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,13 +48,44 @@ public class SummaryActivity extends AppCompatActivity {
         Float[] creditorsValue = getValues(creditorsIndex);
         sort(debtorsValue, debtorsIndex);
         sort(creditorsValue, creditorsIndex);
-        Log.d("debt", Arrays.toString(debtorsValue));
-        Log.d("credit", Arrays.toString(creditorsValue));
         log = settle(debtorsValue, debtorsIndex, creditorsValue, creditorsIndex);
-        for (int i = 0; i < log.size(); i++) {
-            Log.d("debtorsvalue", log.get(i));
-        }
+
         populateListView();
+
+        btn_settle = findViewById(R.id.btn_settle);
+        btn_settle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setStatus();
+                setTripName();
+                endTrip();
+                Toast.makeText(SummaryActivity.this, "Trip Completed", Toast.LENGTH_SHORT).show();
+                finish();
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void setStatus() {
+        SharedPreferences sharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("Status", 0);
+        editor.apply();
+    }
+
+    private void setTripName() {
+        SharedPreferences sharedPreferences = getSharedPreferences("Pref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putString("TripName", "");
+        editor.apply();
+    }
+
+    public void endTrip() {
+        DatabaseHelper dbHelper = new DatabaseHelper(instance.context);
+        dbHelper.deleteData();
+        DatabaseHelper1 dbHelper1 = new DatabaseHelper1(instance.context);
+        dbHelper1.deleteData();
     }
 
     private void populateListView() {
