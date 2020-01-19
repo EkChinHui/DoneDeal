@@ -30,10 +30,10 @@
         android:layout_height="327dp"
         android:divider="#33d9b2"
         android:dividerHeight="1dp"
-        tools:layout_conversion_absoluteHeight="363dp"
-        tools:layout_conversion_absoluteWidth="411dp"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="40dp" />
+    tools:layout_conversion_absoluteHeight="363dp"
+    tools:layout_conversion_absoluteWidth="411dp"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="40dp" />
 
     <Button
         android:id="@+id/btn_settle"

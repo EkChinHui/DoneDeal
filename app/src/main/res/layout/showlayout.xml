@@ -1,10 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#31D4A3"
+        android:drawableStart="@drawable/ic_airplanemode_active_black_24dp"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/advent_pro_light"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:text="Individual Expenditure"
+        android:textColor="#ffffff"
+        android:textSize="24dp"
+        android:textStyle="normal|bold" />
 
     <ListView
         android:id="@+id/listViewShow"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="731dp"
+        android:divider="#33d9b2"
+        android:dividerHeight="1dp"
+        tools:layout_conversion_absoluteHeight="363dp"
+        tools:layout_conversion_absoluteWidth="411dp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="40dp" />
+    />
 </LinearLayout>
