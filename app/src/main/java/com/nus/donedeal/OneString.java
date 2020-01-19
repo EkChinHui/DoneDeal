@@ -13,5 +13,7 @@ public class OneString {
         return price;
     }
     public String getName() { return name; }
-
+    public void setPrice(float new_price) {
+        price = new_price;
+    }
 }

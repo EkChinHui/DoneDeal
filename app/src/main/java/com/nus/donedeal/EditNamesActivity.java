@@ -1,6 +1,5 @@
 package com.nus.donedeal;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,8 +8,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
-public class EditNamesActivity extends Activity {
+public class EditNamesActivity extends AppCompatActivity {
     Button btn_save, btn_delete;
     EditText t_editName;
     DatabaseHelper mDatabaseHelper;

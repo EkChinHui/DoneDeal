@@ -6,43 +6,88 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView_show_description"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Description"
-        app:layout_constraintBottom_toTopOf="@+id/textView_show_amount"
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#31D4A3"
+        android:drawableLeft="@drawable/ic_edit_black_24dp"
+        android:drawablePadding="10dp"
+        android:fontFamily="@font/advent_pro_light"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:text="Edit Deal"
+        android:textColor="#ffffff"
+        android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView_show_amount"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:text="Amount"
-        app:layout_constraintBottom_toTopOf="@+id/textView_show_paidBy"
+        android:id="@+id/textView_show_description"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:height="40sp"
+        android:fontFamily="@font/advent_pro_light"
+        android:gravity="center_vertical"
+        android:text="Description:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_show_description" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.199" />
+
+    <TextView
+        android:id="@+id/textView_show_amount"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:height="40sp"
+        android:fontFamily="@font/advent_pro_light"
+        android:gravity="center_vertical"
+        android:text="Amount:"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.141" />
 
     <TextView
         android:id="@+id/textView_show_paidBy"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:height="40sp"
+        android:fontFamily="@font/advent_pro_light"
+        android:gravity="center_vertical"
         android:text="Paid By:"
-        app:layout_constraintBottom_toTopOf="@+id/btn_delete_expenditure"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_show_amount" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.083" />
 
     <Button
         android:id="@+id/btn_delete_expenditure"
-        android:layout_width="0dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="483dp"
-        android:text="Delete"
+        android:background="@drawable/addexpenditure_button"
+        android:drawableLeft="@drawable/ic_delete_black_24dp"
+        android:paddingLeft="15dp"
+
+        android:text="Break Deal"
+        android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_show_paidBy" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,10 +16,12 @@
         <activity android:name=".HomeActivity"></activity>
         <activity android:name=".NamesActivity"></activity>
         <activity android:name=".EditNamesActivity"></activity>
-        <activity android:name=".AddExpenditureActivity"></activity>
+        <activity android:name=".AddExpenditureActivity"
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".ViewExpenditureActivity"></activity>
         <activity android:name=".DeleteExpenditureActivity"></activity>
         <activity android:name=".ShowActivity"></activity>
+        <activity android:name=".SummaryActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"

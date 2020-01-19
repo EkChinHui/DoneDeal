@@ -102,6 +102,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return arrayList;
     }
 
+    public ArrayList<Float> getAllExpenditure() {
+        ArrayList<Float> arrayList = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor data = db.rawQuery(query, null);
+        data.moveToFirst();
+        if (data != null) {
+            while (!data.isAfterLast()) {
+                arrayList.add(data.getFloat(data.getColumnIndex(COL2)));
+                data.moveToNext();
+            }
+        }
+        return arrayList;
+    }
+
+    public ArrayList<Float> getAllContribution() {
+        ArrayList<Float> arrayList = new ArrayList<>();
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor data = db.rawQuery(query, null);
+        data.moveToFirst();
+        if (data != null) {
+            while (!data.isAfterLast()) {
+                arrayList.add(data.getFloat(data.getColumnIndex(COL3)));
+                data.moveToNext();
+            }
+        }
+        return arrayList;
+    }
+
+
     public void addExpenditureEqually(Float expenditure) {
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + TABLE_NAME;
