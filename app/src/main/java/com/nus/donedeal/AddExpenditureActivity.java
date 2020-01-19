@@ -48,6 +48,7 @@ public class AddExpenditureActivity extends AppCompatActivity {
         mDatabaseHelper = new DatabaseHelper(this);
         mDatabaseHelper1 = new DatabaseHelper1(this);
         allNames = mDatabaseHelper.getAllNames();
+        btn_splitmanual.setVisibility(View.GONE);
 
 
         btn_addExpenditure.setOnClickListener(new View.OnClickListener() {
@@ -72,6 +73,7 @@ public class AddExpenditureActivity extends AppCompatActivity {
                     } else if (method.equals("Manually")) {
                         toastMessage("Split Manually");
                         populateSplitListView();
+                        btn_splitmanual.setVisibility(View.VISIBLE);
                         btn_splitmanual.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
