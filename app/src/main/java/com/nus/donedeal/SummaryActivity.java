@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -15,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class SummaryActivity extends AppCompatActivity {
     public static DatabaseHelper instance;
@@ -48,6 +50,8 @@ public class SummaryActivity extends AppCompatActivity {
         Float[] creditorsValue = getValues(creditorsIndex);
         sort(debtorsValue, debtorsIndex);
         sort(creditorsValue, creditorsIndex);
+        Log.d("debt", Arrays.toString(debtorsValue));
+        Log.d("credit", Arrays.toString(creditorsValue));
         log = settle(debtorsValue, debtorsIndex, creditorsValue, creditorsIndex);
 
         populateListView();
@@ -197,7 +201,6 @@ public class SummaryActivity extends AppCompatActivity {
                             debtorsValue[i] += creditorsValue[j];
                             creditorsValue[j] -= creditorsValue[j];
                             result.add(log);
-                            break;
                         }
                     }
                 }
